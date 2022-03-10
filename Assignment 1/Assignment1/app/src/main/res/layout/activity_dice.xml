@@ -1,0 +1,201 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".DiceActivity">
+
+    <Button
+        android:id="@+id/undo"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="34dp"
+        android:layout_marginEnd="16dp"
+        android:layout_marginBottom="39dp"
+        android:text="UNDO"
+        app:layout_constraintBottom_toTopOf="@+id/calculated_avg"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toEndOf="@+id/average_id"
+        app:layout_constraintTop_toBottomOf="@+id/rolledNumber" />
+
+    <TextView
+        android:id="@+id/histogram"
+        android:layout_width="411dp"
+        android:layout_height="423dp"
+        android:text="Histogram"
+        android:textSize="5dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/calculated_max" />
+
+    <TextView
+        android:id="@+id/sessionName"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Session Name"
+        android:textSize="40dp"
+        app:layout_constraintBottom_toTopOf="@+id/rollDice"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.692" />
+
+    <TextView
+        android:id="@+id/rollNumber"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="14dp"
+        android:layout_marginTop="18dp"
+        android:layout_marginEnd="41dp"
+        android:text="Number of rolls"
+        android:textSize="20dp"
+        app:layout_constraintBottom_toTopOf="@+id/sideNumber"
+        app:layout_constraintEnd_toStartOf="@+id/rolledNumber"
+        app:layout_constraintStart_toEndOf="@+id/numberOfRolls"
+        app:layout_constraintTop_toBottomOf="@+id/rollDice" />
+
+    <TextView
+        android:id="@+id/sideNumber"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="14dp"
+        android:layout_marginTop="6dp"
+        android:layout_marginEnd="65dp"
+        android:layout_marginBottom="24dp"
+        android:text="Side Number"
+        android:textSize="20dp"
+        app:layout_constraintBottom_toTopOf="@+id/max_value"
+        app:layout_constraintEnd_toStartOf="@+id/undo"
+        app:layout_constraintStart_toEndOf="@+id/sideNumbers"
+        app:layout_constraintTop_toBottomOf="@+id/rollNumber" />
+
+    <TextView
+        android:id="@+id/numberOfRolls"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Rolls:"
+        app:layout_constraintBottom_toTopOf="@+id/sideNumbers"
+        app:layout_constraintEnd_toStartOf="@+id/rollNumber"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="@+id/rollNumber" />
+
+    <TextView
+        android:id="@+id/sideNumbers"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="4dp"
+        android:layout_marginEnd="15dp"
+        android:text="Sides:"
+        app:layout_constraintBottom_toTopOf="@+id/min_value"
+        app:layout_constraintEnd_toStartOf="@+id/sideNumber"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="@+id/sideNumber" />
+
+    <Button
+        android:id="@+id/rollDice"
+        android:layout_width="126dp"
+        android:layout_height="38dp"
+        android:text="Add"
+        app:layout_constraintBottom_toTopOf="@+id/rollNumber"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="@+id/rolledNumber" />
+
+    <TextView
+        android:id="@+id/average_id"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Avg"
+        app:layout_constraintBottom_toTopOf="@+id/calculated_avg"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toEndOf="@+id/max_value"
+        app:layout_constraintTop_toBottomOf="@+id/undo" />
+
+    <TextView
+        android:id="@+id/min_value"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="46dp"
+        android:layout_marginEnd="111dp"
+        android:layout_marginBottom="6dp"
+        android:text="Min"
+        app:layout_constraintBottom_toTopOf="@+id/calculated_min"
+        app:layout_constraintEnd_toStartOf="@+id/max_value"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/sideNumbers" />
+
+    <EditText
+        android:id="@+id/calculated_avg"
+        android:layout_width="89dp"
+        android:layout_height="48dp"
+        android:layout_marginTop="11dp"
+        android:layout_marginEnd="64dp"
+        android:layout_marginBottom="15dp"
+        android:ems="10"
+        android:inputType="textPersonName"
+        app:layout_constraintBottom_toTopOf="@+id/histogram"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toEndOf="@+id/calculated_max"
+        app:layout_constraintTop_toBottomOf="@+id/average_id"
+        tools:ignore="SpeakableTextPresentCheck" />
+
+    <EditText
+        android:id="@+id/calculated_min"
+        android:layout_width="115dp"
+        android:layout_height="48dp"
+        android:layout_marginStart="16dp"
+        android:ems="10"
+        android:inputType="textPersonName"
+        app:layout_constraintBottom_toBottomOf="@+id/calculated_max"
+        app:layout_constraintEnd_toStartOf="@+id/calculated_max"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/min_value"
+        tools:ignore="SpeakableTextPresentCheck" />
+
+    <TextView
+        android:id="@+id/max_value"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="24dp"
+        android:layout_marginBottom="12dp"
+        android:text="Max"
+        app:layout_constraintBottom_toTopOf="@+id/calculated_max"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/sideNumber" />
+
+    <EditText
+        android:id="@+id/calculated_max"
+        android:layout_width="97dp"
+        android:layout_height="48dp"
+        android:layout_marginStart="7dp"
+        android:layout_marginTop="13dp"
+        android:layout_marginEnd="12dp"
+        android:layout_marginBottom="14dp"
+        android:ems="10"
+        android:inputType="textPersonName"
+        app:layout_constraintBottom_toTopOf="@+id/histogram"
+        app:layout_constraintEnd_toStartOf="@+id/calculated_avg"
+        app:layout_constraintStart_toEndOf="@+id/calculated_min"
+        app:layout_constraintTop_toBottomOf="@+id/max_value"
+        tools:ignore="SpeakableTextPresentCheck" />
+
+    <EditText
+        android:id="@+id/rolledNumber"
+        android:layout_width="113dp"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="29dp"
+        android:layout_marginTop="-10dp"
+        android:layout_marginBottom="10dp"
+        android:ems="10"
+        android:inputType="number"
+        android:minHeight="48dp"
+        app:layout_constraintBottom_toTopOf="@+id/undo"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toEndOf="@+id/rollDice"
+        app:layout_constraintTop_toBottomOf="@+id/sessionName"
+        tools:ignore="SpeakableTextPresentCheck" />
+
+</androidx.constraintlayout.widget.ConstraintLayout>
