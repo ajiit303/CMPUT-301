@@ -6,6 +6,7 @@ import androidx.appcompat.app.AppCompatActivity;
 import androidx.core.app.ActivityCompat;
 
 import android.Manifest;
+import android.annotation.SuppressLint;
 import android.content.pm.PackageManager;
 import android.location.Address;
 import android.location.Geocoder;
@@ -52,7 +53,9 @@ public class MainActivity extends AppCompatActivity {
             public void onClick(View view) {
                 // Check permission
                 if (ActivityCompat.checkSelfPermission(MainActivity.this,
-                        Manifest.permission.ACCESS_FINE_LOCATION) == PackageManager.PERMISSION_GRANTED) {
+                        Manifest.permission.ACCESS_FINE_LOCATION) == PackageManager.PERMISSION_GRANTED
+                && ActivityCompat.checkSelfPermission(MainActivity.this,
+                        Manifest.permission.ACCESS_COARSE_LOCATION) == PackageManager.PERMISSION_GRANTED) {
                     // When permission is granted
                     getLocation();
                 } else {
@@ -64,6 +67,7 @@ public class MainActivity extends AppCompatActivity {
         });
     }
 
+    @SuppressLint("MissingPermission")
     private void getLocation() {
         fusedLocationProviderClient.getLastLocation().addOnCompleteListener(new OnCompleteListener<Location>() {
             @Override
@@ -81,30 +85,17 @@ public class MainActivity extends AppCompatActivity {
                                 location.getLatitude(), location.getLongitude(), 1
                         );
                         // Set latitude to TextView
-                        textView1.setText(Html.fromHtml(
-                                "< font color='#6200EE'><b>Latitude :</b><br></font>"
-                                + addresses.get(0).getLatitude()
-                        ));
+                        String latitudeString = Double.toString(addresses.get(0).getLatitude());
+                        textView1.setText("Latitude: "+latitudeString);
                         // Set longitude to TextView
-                        textView2.setText(Html.fromHtml(
-                                "< font color='#6200EE'><b>Longitude :</b><br></font>"
-                                        + addresses.get(0).getLongitude()
-                        ));
+                        String longString = Double.toString(addresses.get(0).getLongitude());
+                        textView2.setText("Longitude: "+longString);
                         // Set country name
-                        textView3.setText(Html.fromHtml(
-                                "< font color='#6200EE'><b>Country Name :</b><br></font>"
-                                        + addresses.get(0).getCountryName()
-                        ));
+                        textView3.setText("Address: "+addresses.get(0).getCountryName());
                         // Set Locality
-                        textView4.setText(Html.fromHtml(
-                                "< font color='#6200EE'><b>City Name :</b><br></font>"
-                                        + addresses.get(0).getLocality()
-                        ));
+                        textView4.setText("Locality: "+addresses.get(0).getLocality());
                         // Set Address
-                        textView5.setText(Html.fromHtml(
-                                "< font color='#6200EE'><b>Address :</b><br></font>"
-                                        + addresses.get(0).getAddressLine(0)
-                        ));
+                        textView5.setText("Address: "+addresses.get(0).getAddressLine(0));
                     } catch (IOException e) {
                         e.printStackTrace();
                     }
